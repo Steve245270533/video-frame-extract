@@ -41,6 +41,8 @@ export default function FrameExtractor({ videoSrc, currentTime }: FrameExtractor
     const video = document.createElement('video')
     video.src = videoSrc
     video.crossOrigin = 'anonymous'
+    // eslint-disable-next-line ts/ban-ts-comment
+    // @ts-expect-error
     videoRef.current = video
 
     const handleLoadedMetadata = () => {
