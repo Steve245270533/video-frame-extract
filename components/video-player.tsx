@@ -1,4 +1,5 @@
 import { forwardRef, useEffect, useRef } from 'react'
+import type { RefObject } from 'react'
 
 interface VideoPlayerProps {
   src: string
@@ -10,9 +11,9 @@ const VideoPlayer = forwardRef<HTMLVideoElement, VideoPlayerProps>(({ src, onTim
 
   useEffect(() => {
     const videoElement = ref || internalRef
-    if (videoElement.current) {
-      videoElement.current.addEventListener('timeupdate', () => {
-        onTimeUpdate(videoElement.current!.currentTime)
+    if ((videoElement as RefObject<HTMLVideoElement>).current) {
+      (videoElement as RefObject<HTMLVideoElement>).current?.addEventListener('timeupdate', () => {
+        onTimeUpdate((videoElement as RefObject<HTMLVideoElement>).current!.currentTime)
       })
     }
   }, [ref, onTimeUpdate])

@@ -16,6 +16,8 @@ const extractFrame = async (videoSrc: string, currentTime: number, canvasWidth: 
   if (ctx) {
     ctx.drawImage(video, 0, 0, canvasWidth, canvasHeight)
     const imageData = ctx.getImageData(0, 0, canvasWidth, canvasHeight)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     self.postMessage({ imageData }, [imageData.data.buffer])
   }
 }
