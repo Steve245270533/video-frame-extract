@@ -16,7 +16,6 @@ const extractFrame = async (videoSrc: string, currentTime: number, canvasWidth: 
   if (ctx) {
     ctx.drawImage(video, 0, 0, canvasWidth, canvasHeight)
     const imageData = ctx.getImageData(0, 0, canvasWidth, canvasHeight)
-    // @ts-ignore
     self.postMessage({ imageData }, [imageData.data.buffer])
   }
 }
